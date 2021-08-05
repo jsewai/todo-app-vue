@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Vue app starter</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css'><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="app">
+  <h1>Notes</h1>
+  <button @click="createNote" class="create-new-button">Create New</button>
+  <div class="notes">
+    <nav>
+      <p v-if="!notes.length">No notes added</p>
+      <ul v-if="notes.length">
+        <li v-for="note in notes">
+          <button v-on:click="currentNote = note" v-bind:class="{active: note === currentNote}">{{note.title}}</button>
+        </li>
+      </ul>
+    </nav>
+    <div v-if="currentNote" class="current-note">
+      <input v-model="currentNote.title" ref="noteTitle">
+      <textarea v-model="currentNote.contents">
+      </textarea>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+  <script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>
